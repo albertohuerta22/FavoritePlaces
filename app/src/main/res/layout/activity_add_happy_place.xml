@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".AddHappyPlace">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_place"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/CustomToolbarStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBaseline_toTopOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
