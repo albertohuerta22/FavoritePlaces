@@ -1,12 +1,14 @@
 package com.example.happyplaces
 
 import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_happy_place.*
+import java.text.SimpleDateFormat
 import java.util.*
 
-class AddHappyPlace : AppCompatActivity() {
+class AddHappyPlace : AppCompatActivity(){
 
 
     private var cal = Calendar.getInstance()
@@ -23,10 +25,16 @@ class AddHappyPlace : AppCompatActivity() {
         toolbar_add_place.setNavigationOnClickListener{
             onBackPressed()
         }
+
+        dateSetListener = DatePickerDialog.OnDateSetListener {
+                view, year, month, dayOfMonth ->
+
+            cal.set(Calendar.YEAR, year)
+        }
+
     }
 
 
-    dateSetListener = DatePickerDialog.OnDateSetListener{
-        view, year, month, dayOfMonth -> }
+
 
 }
