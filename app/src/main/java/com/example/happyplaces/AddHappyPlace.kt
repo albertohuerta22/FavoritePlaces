@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_add_happy_place.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddHappyPlace : AppCompatActivity(){
+class AddHappyPlace : AppCompatActivity(), View.OnClickListener{
 
 
     private var cal = Calendar.getInstance()
@@ -30,11 +30,28 @@ class AddHappyPlace : AppCompatActivity(){
                 view, year, month, dayOfMonth ->
 
             cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, month)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateView()
         }
-
+        et_date.setOnClickListener(this)
     }
 
+    override fun onClick(v: View?) { // this is where all the onClick events will happen
+        when(v!!.id){
+            R.id.et_date -> { // when person presses this button i want to execute this code
+                DatePickerDialog(this@AddHappyPlace, dateSetListener, cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)).show()
 
+            }
+        }
+    }
 
+    private fun updateDateView(){
+        val myFormat = "dd.MM.yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+        et_date.setText(sdf.format(cal.time).toString())
+    }
 
 }
